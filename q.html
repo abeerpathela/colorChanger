@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="h-screen w-screen flex flex-col justify-center items-center bg-gray-600" id="full-page">
+        <div>
+            <button id="randomColorGeneratorButton" class="bg-gray-500 px-12 py-1 border-2 border-solid  flex justify-center items-center  text-xl border-white  rounded-3xl bg-gradient-to-r from-rose-500 to-violet-500 bg-clip-text text-transparent">Random</button>
+        </div>
+        <div class="flex space-x-6 border-2 border-solid border-gray-500 px-10 py-7 fixed bottom-14 rounded-3xl bg-gray-500" id="pallete">
+            <button id="softLightGray-Generator">
+                <img src="f4f4f4.png" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white">#f4f4f4</p>
+            </button>
+            <button id="pastelBlue-Generator">
+                <img src="e3f2fd.png" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white ">#e3f2fd</p>
+            </button>
+            <button id="offWhiteCream-Generator">
+                <img src="fff8e7.png" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white ">#fff8e7</p>
+            </button>
+            <button id="coolSlate-Generator">
+                <img src="f0f4f8.png" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white ">#f0f4f8</p>
+            </button>
+            <button id="mistyRoseGray-Generator">
+                <img src="download.jpeg" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white ">#f7f3f5</p>
+            </button>
+            <button id="softMintFrost-Generator">
+                <img src="e8f8f5.png" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white ">#E8F8F5</p>
+            </button>
+            <button id="paleLavender-Generator">
+                <img src="f3effe.png" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white ">#F3EFFE</p>
+            </button>
+            <button id="cloudySkyBlue-Generator">
+                <img src="eef6ff.jpeg" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white ">#EEF6FF</p>
+            </button>
+            <button id="warmSand-Generator">
+                <img src="f8f1e4.png" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white ">#F8F1E4</p>
+            </button>
+            <button id="frostedSilver-Generator">
+                <img src="ececec.png" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white ">#ECECEC</p>
+            </button>
+            <button id="blushBeige-Generator">
+                <img src="faf1f0.png" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white ">#FAF1F0</p>
+            </button>
+            <button id="freshSnowWhite-Generator">
+                <img src="fafafa.png" class="h-12 w-20 transition-transform duration-300 hover:scale-110">
+                <p class="text-white ">#FAFAFA</p>
+            </button>
+        </div>
+    </div>
+    <script>
+        const fullPage=document.querySelector("#full-page");
+        const softLightGrayGenerator=document.querySelector("#softLightGray-Generator");
+        const pallete=document.querySelector("#pallete");
+        const randomColorGeneratorButton=document.querySelector("#randomColorGeneratorButton");
+        let allButtons=document.querySelectorAll("button");
+        function changeHandler(event){
+            let colorValue=event.currentTarget.querySelector('p').innerText;
+            fullPage.style.backgroundColor=colorValue;
+        }
+        if(pallete){
+            allButtons.forEach((button)=>{
+                button.addEventListener('click',changeHandler);
+            })
+        }
+        else{
+            console.log("Pallete not found!!");
+        }
+        
+        const paletteColors = [
+            "#f4f4f4",
+            "#e3f2fd",
+            "#fff8e7",
+            "#f0f4f8",
+            "#f7f3f5",
+            "#E8F8F5",
+            "#F3EFFE",
+            "#EEF6FF",
+            "#F8F1E4",
+            "#ECECEC",
+            "#FAF1F0",
+            "#FAFAFA"
+        ];
+
+        function randomGenerate(){
+            let randomIndex=Math.floor(Math.random()*paletteColors.length);
+            let randomColor=paletteColors[randomIndex];
+
+            fullPage.style.backgroundColor=randomColor;
+        }
+
+        randomColorGeneratorButton.addEventListener('click',randomGenerate);
+        
+    </script>
+</body>
+</html>
